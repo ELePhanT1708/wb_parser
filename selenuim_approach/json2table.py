@@ -13,12 +13,12 @@ def read_column_names():
 
 
 def read_json_info():
-    json = pd.read_json('rostkniga_test.json', encoding='windows-1251')
+    json = pd.read_json('z_book.json', encoding='windows-1251')
     list_of_df = []
     for book in json:
         add_row_about_book2df(json[book], list_of_df)
     res_df = pd.concat(list_of_df)
-    res_df.to_excel('output.xlsx')
+    res_df.to_excel('z_book.xlsx')
     print(res_df)
 
 
@@ -48,4 +48,4 @@ def add_row_about_book2df(json_data: dict, list_of_df: List[pd.DataFrame]):
 
 if __name__ == '__main__':
     read_json_info()
-    # create_table()
+    create_table()

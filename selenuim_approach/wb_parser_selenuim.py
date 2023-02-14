@@ -44,7 +44,7 @@ class Watcher:
     def collect_single_book_page_urls_from_brand_page(self, url_for_all_books_of_one_brand: str) -> List[str]:
         list_of_urls = []
         SCROLL_PAUSE_TIME = 0.1
-        for i in range(1, 2):
+        for i in range(1, 11):
             # количество страниц товаров у бренда нужно глянуть самостоятельно
             # либо разделить количество товаров на сто и прибавить один к целой части
 
@@ -97,20 +97,32 @@ class Watcher:
         # click on all "Развернуть описание и развернуть характеристики"
         for button in buttons_to_open:
             button.click()
-        characteristics = self.driver.find_elements(By.CSS_SELECTOR, ".product-page .product-params__cell-decor span")
-        values = self.driver.find_elements(By.CSS_SELECTOR, ".product-page .product-params__table td")
-        price = self.driver.find_elements(By.CSS_SELECTOR, ".product-page .price-block__final-price")[0]
-        description = self.driver.find_elements(By.CSS_SELECTOR, ".collapsable .collapsable__content")[1]
+        try:
+            characteristics = self.driver.find_elements(By.CSS_SELECTOR, ".product-page .product-params__cell-decor span")
+            values = self.driver.find_elements(By.CSS_SELECTOR, ".product-page .product-params__table td")
+            price = self.driver.find_elements(By.CSS_SELECTOR, ".product-page .price-block__final-price")[0]
+            description = self.driver.find_elements(By.CSS_SELECTOR, ".collapsable .collapsable__content")[1]
+        except:
+            pass
+
 
         for charast, value in zip(characteristics[5:], values[5:]):
             characterisitcs[f'{charast.text}'] = value.text
             print(charast.text, ' - ', value.text)
-        characterisitcs['Цена'] = int(price.text.split()[0])
-        characterisitcs['Описание'] = description.text
+        try:
+            characterisitcs['Цена'] = int(price.text.split()[0])
+            characterisitcs['Описание'] = description.text
+        except:
+            pass
         images = self.driver.find_elements(By.CSS_SELECTOR, "div.slide__content.img-plug.j-wba-card-item")
+        video = self.driver.find_elements(By.CSS_SELECTOR, "div.slide__content.img-plug.j-wba-card-item play")
+
         for img in images:
-            url = img.find_element(By.TAG_NAME, 'img').get_attribute('src')
-            img_url_list.append(url)
+            try:
+                url = img.find_element(By.TAG_NAME, 'img').get_attribute('src')
+                img_url_list.append(url)
+            except:
+                pass
         print(img_url_list)
         print(characterisitcs)
         return {
@@ -122,22 +134,30 @@ class Watcher:
 
 if __name__ == '__main__':
     watcher = Watcher()
-    brand_url = 'https://www.wildberries.ru/brands/rostkniga/all'
-    list_of_urls = watcher.collect_single_book_page_urls_from_brand_page(brand_url)
+    brand_url = 'https://www.wildberries.ru/seller/151127'
+    # list_of_urls = watcher.collect_single_book_page_urls_from_brand_page(brand_url)
+    # with open("z_book_urls.txt", "w", encoding='windows-1251') as outfile:
+    #     for url in list_of_urls:
+    #         outfile.write(url + '\n')
+    json_info = {}
+    with open("z_book_urls.txt", "r", encoding='windows-1251') as outfile:
+        for row in outfile:
+            res = watcher.parse_book_page(row)
+            json_info[f'{row}'] = res
     # with open("rostkniga_all.txt", "w", encoding='windows-1251') as outfile:
     #     for url in list_of_urls:
     #         outfile.write(url + '\n')
     # with open("rostkniga_test.txt", "w", encoding='windows-1251') as outfile:
     #     for url in list_of_urls:
     #         outfile.write(url + '\n')
-    json_info = {}
-    for book in list_of_urls:
-        res = watcher.parse_book_page(book)
-        json_info[f'{book}'] = res
+    # json_info = {}
+    # for book in list_of_urls:
+    #     res = watcher.parse_book_page(book)
+    #     json_info[f'{book}'] = res
     # Serializing json
     json_object = json.dumps(json_info, indent=4, ensure_ascii=False)
     #
     # Writing to sample.json
-    with open("rostkniga_test.json", "w", encoding='windows-1251') as outfile:
+    with open("z_book.json", "w", encoding='windows-1251') as outfile:
         outfile.write(json_object)
 
