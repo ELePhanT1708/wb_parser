@@ -1,0 +1,35 @@
+22:46:33,611 root INFO Running Urban Planning
+22:47:39,571 root INFO Running Urban Planning
+22:48:08,655 root INFO Running Urban Planning
+22:51:21,954 root INFO Running Urban Planning
+22:52:17,772 root INFO Running Urban Planning
+22:52:39,44 root INFO Running Urban Planning
+22:53:19,132 wb_parser ERROR [Errno 2] No such file or directory: 'œ–Œ‘—œ≈÷“Œ–√/details/œ–Œ‘—œ≈÷“Œ–√_urls_1.json'
+22:53:19,132 wb_parser ERROR œ–Œ‘—œ≈÷“Œ–√_urls_1.txt didn't work properly 
+22:53:19,132 wb_parser ERROR [Errno 2] No such file or directory: 'œ–Œ‘—œ≈÷“Œ–√/details/œ–Œ‘—œ≈÷“Œ–√_urls_1.json'
+Traceback (most recent call last):
+  File "C:\Users\–‡ÏËÎ¸\PycharmProjects\wb_parser\selenuim_approach\wb_parser_selenuim.py", line 181, in parse_details_by_partition
+    with open(f"œ–Œ‘—œ≈÷“Œ–√/details/{file.split('.')[0]}.json", "w", encoding='utf-8') as outfile:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'œ–Œ‘—œ≈÷“Œ–√/details/œ–Œ‘—œ≈÷“Œ–√_urls_1.json'
+22:54:02,915 root INFO Running Urban Planning
+22:54:44,277 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_1.txt was successfully parsed !  
+22:55:18,777 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_10.txt was successfully parsed !  
+22:55:53,26 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_11.txt was successfully parsed !  
+22:56:30,486 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_12.txt was successfully parsed !  
+22:57:07,802 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_13.txt was successfully parsed !  
+22:57:42,201 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_14.txt was successfully parsed !  
+22:58:16,722 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_15.txt was successfully parsed !  
+22:58:50,387 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_16.txt was successfully parsed !  
+22:59:27,545 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_17.txt was successfully parsed !  
+23:00:03,944 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_18.txt was successfully parsed !  
+23:00:38,382 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_19.txt was successfully parsed !  
+23:01:13,535 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_2.txt was successfully parsed !  
+23:01:46,911 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_20.txt was successfully parsed !  
+23:02:22,200 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_3.txt was successfully parsed !  
+23:02:57,714 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_4.txt was successfully parsed !  
+23:03:30,980 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_5.txt was successfully parsed !  
+23:04:04,620 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_6.txt was successfully parsed !  
+23:04:36,697 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_7.txt was successfully parsed !  
+23:05:08,498 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_8.txt was successfully parsed !  
+23:05:39,908 wb_parser INFO œ–Œ‘—œ≈÷“Œ–√_urls_9.txt was successfully parsed !  
